@@ -30,16 +30,17 @@ A command-line tool to fetch and display historical events, births, and deaths f
    ```sh
    ./today
    ```
+- **Follow the prompts to select event type.**
 
 ---
 
 ## 📝 Usage
 
-- **Start the CLI:**
+- **Show help:**
   ```sh
-  ./today
+  ./today -h
   ```
-- **Follow the prompts to select event type and date.**
+- **Input a custom date as directed or opt for automatic event type selection.**
 - **Copy results to clipboard with a single keypress.**
 
 ---
