@@ -51,6 +51,8 @@ func Start(autoStart, month, day int) {
 		eventsFromAPI := GetEventsType(selection)
 		for _, event := range eventsFromAPI {
 			event.Text = strings.ReplaceAll(event.Text, "&nbsp;", " ")
+			event.Text = strings.ReplaceAll(event.Text, "   ", " ")
+			event.Text = strings.ReplaceAll(event.Text, "  ", " ")
 			formattedEvents = append(formattedEvents, event.Text)
 		}
 
