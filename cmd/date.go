@@ -36,7 +36,7 @@ var dateCmd = &cobra.Command{
 			logger.LogErr(logger.MakeError("The day needs to be comprised between 1 and 31"))
 		}
 
-		services.Start(0, month, day)
+		services.StartWithOutput(0, month, day, outputFile)
 	},
 }
 

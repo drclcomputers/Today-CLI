@@ -16,7 +16,7 @@ var eventsCmd = &cobra.Command{
 	Short:   "Show only events that have happened in the past.",
 	Aliases: []string{"e"},
 	Run: func(cmd *cobra.Command, args []string) {
-		services.Start(1, 0, 0)
+		services.StartWithOutput(1, 0, 0, outputFile)
 	},
 }
 

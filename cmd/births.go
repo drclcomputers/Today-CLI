@@ -16,7 +16,7 @@ var birthsCmd = &cobra.Command{
 	Short:   "Show only births that have happened in the past.",
 	Aliases: []string{"b"},
 	Run: func(cmd *cobra.Command, args []string) {
-		services.Start(2, 0, 0)
+		services.StartWithOutput(2, 0, 0, outputFile)
 	},
 }
 

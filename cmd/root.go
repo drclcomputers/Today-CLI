@@ -13,6 +13,8 @@ import (
 	"today/internal/services"
 )
 
+var outputFile string
+
 var rootCmd = &cobra.Command{
 	Use:   "today",
 	Short: "Get a detailed overview of past events that have happened today.",
@@ -28,7 +30,7 @@ you discover such facts with a simple command.`,
 			return
 		}
 
-		services.Start(0, 0, 0)
+		services.StartWithOutput(0, 0, 0, outputFile)
 	},
 }
 
@@ -40,3 +42,7 @@ func Execute() {
 }
 
 func init() {}
+
+func init() {
+	rootCmd.PersistentFlags().StringVarP(&outputFile, "output", "o", "", "Save output to file (txt, json, md supported by extension)")
+}

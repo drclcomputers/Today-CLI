@@ -6,7 +6,9 @@
 package services
 
 import (
+	"encoding/json"
 	"fmt"
+	"os"
 	"strings"
 	"today/internal/logger"
 	"today/internal/utils"
@@ -23,7 +25,7 @@ func ShowDate(month, day int) {
 	fmt.Println()
 }
 
-func Start(autoStart, month, day int) {
+func StartWithOutput(autoStart, month, day int, outputFile string) {
 	var selection int
 
 	switch autoStart {
@@ -56,10 +58,44 @@ func Start(autoStart, month, day int) {
 			formattedEvents = append(formattedEvents, event.Text)
 		}
 
-		utils.ClearScreen()
+		if outputFile != "" {
+			err := saveEventsToFile(formattedEvents, outputFile)
+			if err != nil {
+				logger.LogErr(logger.MakeError("Failed to save output: " + err.Error()))
+			} else {
+				fmt.Printf("Saved output to %s\n", outputFile)
+			}
+			return
+		}
 
+		utils.ClearScreen()
 		showEventList(formattedEvents)
 	default:
 		logger.MakeError("Unknown selection chosen! Aborting!")
 	}
+}
+
+func saveEventsToFile(events []string, filename string) error {
+	ext := "txt"
+	if idx := strings.LastIndex(filename, "."); idx != -1 {
+		ext = filename[idx+1:]
+	}
+	var content string
+	switch ext {
+	case "json":
+		b, err := json.MarshalIndent(events, "", "  ")
+		if err != nil {
+			return err
+		}
+		content = string(b)
+	case "md":
+		for _, e := range events {
+			content += "- " + e + "\n"
+		}
+	default:
+		for _, e := range events {
+			content += e + "\n"
+		}
+	}
+	return os.WriteFile(filename, []byte(content), 0644)
 }

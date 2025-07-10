@@ -8,6 +8,7 @@ package services
 import (
 	"fmt"
 	"io"
+	"math/rand/v2"
 	"slices"
 	"time"
 	"today/internal/utils"
@@ -66,6 +67,15 @@ func (m eventListModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 				m.list.StatusMessageLifetime = 4 * time.Second
 				return m, m.list.NewStatusMessage("Copied to clipboard!")
 			}
+		case "n":
+			if m.list.ShowStatusBar() == false {
+				m.list.SetShowStatusBar(!false)
+			} else {
+				m.list.SetShowStatusBar(false)
+			}
+		case "r":
+			randIndex := rand.IntN(len(m.list.Items()))
+			m.list.Select(randIndex)
 		}
 	}
 	var cmd tea.Cmd
@@ -90,9 +100,10 @@ func showEventList(formattedEvents []string) {
 	l := list.New(items, customDelegate{}, int(float64(width)*0.9), height)
 	l.Title = fmt.Sprintf("Chosen date: %s %02d", utils.IntToMonthName(utils.MONTH), utils.DAY)
 	l.SetShowTitle(true)
-	//l.SetShowStatusBar(false)
+	l.SetShowStatusBar(false)
 	//l.SetShowHelp(false)
 	//l.SetShowPagination(false)
+	l.SetStatusBarItemName("event", "events")
 
 	m := eventListModel{list: l}
 
