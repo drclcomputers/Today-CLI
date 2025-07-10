@@ -21,5 +21,5 @@ else
     git stash clear
     git pull origin main
     go build
-    echo "Update completed."
+    echo "Update complete."
 fi
