@@ -1,6 +1,6 @@
 # 📅 Today CLI
 
-A command-line tool to fetch and display historical events, births, and deaths for any date. Powered by Wikipedia's API, with a beautiful TUI and clipboard support.
+A command-line tool to fetch and display historical events, births, and deaths for any date. Powered by Zenquotes' On This Day API, with a beautiful TUI and clipboard support.
 
 ---
 
@@ -9,7 +9,7 @@ A command-line tool to fetch and display historical events, births, and deaths f
 - 🔎 Search for events, births, and deaths by date
 - 🗓️ Interactive TUI menu for event type selection
 - 📋 Copy results to clipboard
-- 🌐 Fetches data from Wikipedia
+- 🌐 Fetches data from 'On This Day' API
 - 🖥️ Cross-platform support (Windows, macOS, Linux)
 - 🧩 Modular code structure
 
@@ -73,7 +73,7 @@ Pull requests are welcome! For major changes, please open an issue first to disc
 
 ## 🙏 Acknowledgements
 
-- Wikipedia API
+- [On This Day API](https://today.zenquotes.io/) for the data
 - [Bubble Tea](https://github.com/charmbracelet/bubbletea) for TUI
 - [golang.design/x/clipboard](https://github.com/golang-design/clipboard)
 - [atotto/clipboard](https://github.com/atotto/clipboard)
