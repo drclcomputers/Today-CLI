@@ -17,6 +17,7 @@ if [ ! -d ".git" ]; then
     echo "Cloned latest version."
 else
     echo "Updating app from GitHub..."
+    git stash
     git pull origin main
     go build
     echo "Update completed."
