@@ -18,5 +18,5 @@ if [ ! -d ".git" ]; then
 else
     echo "Updating app from GitHub..."
     git pull origin main
-    echo "Update complete."
+    echo "Update completed."
 fi
