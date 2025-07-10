@@ -18,6 +18,7 @@ if [ ! -d ".git" ]; then
 else
     echo "Updating app from GitHub..."
     git stash
+    git stash clear
     git pull origin main
     go build
     echo "Update completed."
