@@ -97,7 +97,7 @@ func showEventList(formattedEvents []string) {
 
 	width, height := utils.GetTerminalSize()
 
-	l := list.New(items, customDelegate{}, int(float64(width)), height)
+	l := list.New(items, customDelegate{}, width, int(float64(height)*0.9))
 	l.Title = fmt.Sprintf("Chosen date: %s %02d", utils.IntToMonthName(utils.MONTH), utils.DAY)
 	l.SetShowTitle(true)
 	l.SetShowStatusBar(false)
