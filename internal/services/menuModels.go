@@ -20,8 +20,8 @@ import (
 
 type customDelegate struct{}
 
-func (d customDelegate) Height() int                               { return 1 }
-func (d customDelegate) Spacing() int                              { return 1 }
+func (d customDelegate) Height() int                               { return 0 }
+func (d customDelegate) Spacing() int                              { return 0 }
 func (d customDelegate) Update(msg tea.Msg, m *list.Model) tea.Cmd { return nil }
 
 func (d customDelegate) Render(w io.Writer, m list.Model, index int, item list.Item) {
