@@ -35,7 +35,7 @@ var updateCmd = &cobra.Command{
 			} else {
 				fmt.Println("Indexing the update script...")
 			}
-			cmd := exec.Command(scriptPath)
+			cmd := exec.Command("sudo " + scriptPath)
 			cmd.Stdout = os.Stdout
 			cmd.Stderr = os.Stderr
 			if err = cmd.Run(); err != nil {
